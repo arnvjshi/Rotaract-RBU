@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* Brand theme tokens */
+:root {
+  --background: #0b0f28; /* Page background behind gradients */
+  --foreground: #eef2ff; /* Light foreground */
+  --navy-900: #0b1749;
+  --navy-800: #10235f;
+  --magenta-600: #e31c79; /* Primary accent */
+  --magenta-500: #ff2a8e;
+  --muted-400: #98a2b3;
+  --card-800: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-magenta-600: var(--magenta-600);
+  --color-magenta-500: var(--magenta-500);
+  --color-muted-400: var(--muted-400);
+  --color-card-800: var(--card-800);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #080c20;
+    --foreground: #e6e6f0;
+  }
+}
+
+/* Base styles */
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Utility: gradient matching template aesthetics */
+.brand-hero-gradient {
+  background-image: linear-gradient(90deg, var(--navy-900) 0%, var(--navy-900) 55%, var(--magenta-600) 55%, var(--magenta-600) 100%);
+}
+
+.brand-diagonal-mask {
+  mask-image: linear-gradient(70deg, black 60%, transparent 60%);
+}
+
+.container-page {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.card-surface {
+  background: color-mix(in oklab, var(--card-800) 70%, black 30%);
+  border: 1px solid color-mix(in oklab, white 8%, transparent);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary {
+  background: var(--magenta-600);
+  color: white;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.btn-primary:hover { opacity: 0.95; transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0px) scale(0.99); }
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 1px solid color-mix(in oklab, white 24%, transparent);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+}
+
+.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-heading {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 800;
+}
